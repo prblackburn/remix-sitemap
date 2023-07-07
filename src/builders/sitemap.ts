@@ -86,7 +86,9 @@ export function buildSitemapUrl({ config, entry }: BuildSitemapUrlParams) {
   const alternateRefs = (entry?.alternateRefs || config.alternateRefs)?.map(
     ref => ({
       ...ref,
-      href: ref.absolute ? ref.href : `${ref.href}/${entry?.loc}`
+      href: ref.absolute
+        ? ref.href
+        : `${ref.href}/${entry?.loc}?lang=${ref.hreflang}`
     })
   );
 
